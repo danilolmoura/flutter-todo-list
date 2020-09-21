@@ -35,21 +35,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var totalPicesCtrl = TextEditingController();
-  var piecePriceCtrl = TextEditingController();
+  var inputText = TextEditingController();
 
   _HomePageState() {
     load();
   }
 
   void add() {
-    if (totalPicesCtrl.text.isEmpty) return;
+    if (inputText.text.isEmpty) return;
 
     setState(() {
       widget.items.add(
-        Item(title: totalPicesCtrl.text, done: false),
+        Item(title: inputText.text, done: false),
       );
-      totalPicesCtrl.clear();
+      inputText.clear();
     });
     save();
   }
@@ -86,8 +85,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: TextFormField(
-          controller: totalPicesCtrl,
-          keyboardType: TextInputType.number,
+          controller: inputText,
+          keyboardType: TextInputType.text,
           style: TextStyle(color: Colors.white, fontSize: 18),
           decoration: InputDecoration(
             labelText: "New Task",
